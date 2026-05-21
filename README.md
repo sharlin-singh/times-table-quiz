@@ -1,84 +1,112 @@
 # 🧮 Times Table Quiz
 
-An interactive multiplication quiz app to help users practice and master their times tables (1–12). Features configurable settings, timed questions with multiple-choice answers, streak tracking, and a detailed results breakdown.
+An interactive multiplication quiz app built with React and Vite. Practice your times tables with configurable difficulty, timed challenges, and instant feedback.
 
-## 📸 Features
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![Vite](https://img.shields.io/badge/Vite-8-purple?logo=vite)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)
 
-- **Customizable Tables** — Select which multiplication tables (1–12) to practice
-- **Adjustable Question Count** — Choose 10, 20, 30, or 50 questions per session
-- **Timer Options** — Set a per-question time limit (5s, 10s, 15s, 30s) or play untimed
-- **Multiple Choice** — 4 answer options with plausible distractors
-- **Instant Feedback** — Correct/incorrect indicators after each answer
-- **Streak Tracking** — Visual streak counter for consecutive correct answers
-- **Results Summary** — Score, accuracy percentage, total time, and per-question breakdown
+## Features
 
-## 🏗️ Project Structure
+- **Customizable tables** — Choose any combination of the 1–12 times tables to practice
+- **Adjustable question count** — Pick 10, 20, 30, or 50 questions per session
+- **Configurable timer** — Set a per-question time limit (5s, 10s, 15s, 30s) or play untimed
+- **Multiple choice** — Four answer options with plausible distractors
+- **Streak tracking** — Visual fire streak indicator when you get 3+ correct in a row
+- **Instant feedback** — See correct/incorrect results immediately after each answer
+- **Detailed results** — Full breakdown with score, accuracy percentage, total time, and per-question review table
+- **Dark glassmorphism UI** — Modern dark theme with animated transitions and glow effects
+- **Responsive design** — Works on desktop, tablet, and mobile
+- **Accessible** — ARIA attributes on toggle buttons, keyboard navigable
 
-```
-times-table-quiz/
-├── index.html              # Vanilla JS version (entry point)
-├── app.js                  # Vanilla JS quiz logic
-├── style.css               # Vanilla JS styles
-└── times-table-quiz/       # React version
-    ├── src/
-    │   ├── main.jsx
-    │   ├── App.jsx
-    │   ├── index.css
-    │   └── components/
-    │       ├── SettingsScreen.jsx
-    │       ├── QuizScreen.jsx
-    │       └── ResultsScreen.jsx
-    ├── public/
-    ├── index.html
-    ├── package.json
-    └── vite.config.js
-```
+## Tech Stack
 
-This repository contains **two implementations**:
+| Tool | Purpose |
+|------|---------|
+| [React 19](https://react.dev) | UI components and state management |
+| [Vite 8](https://vite.dev) | Build tool and dev server with HMR |
+| [Tailwind CSS 4](https://tailwindcss.com) | Utility-first styling |
+| [ESLint](https://eslint.org) | Code linting with React hooks rules |
 
-| Version | Stack | Location |
-|---------|-------|----------|
-| Vanilla | HTML + CSS + JavaScript | Root (`index.html`, `app.js`, `style.css`) |
-| React | React 19 + Vite + Tailwind CSS 4 | `times-table-quiz/` directory |
+## Getting Started
 
-## 🚀 Getting Started
+### Prerequisites
 
-### Vanilla Version
+- [Node.js](https://nodejs.org) 18+ installed
+- npm (comes with Node.js)
 
-Open `index.html` directly in a browser — no build step required.
-
-### React Version
+### Installation
 
 ```bash
-cd times-table-quiz
+# Clone the repository
+git clone <your-repo-url>
+cd demoOne
+
+# Install dependencies
 npm install
+```
+
+### Development
+
+```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
+Opens the app at [http://localhost:5173](http://localhost:5173) with hot module replacement.
 
-### Available Scripts (React)
+### Build for Production
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+```bash
+npm run build
+```
 
-## 🎮 How to Play
+Output goes to the `dist/` directory. Preview the production build locally:
 
-1. **Settings** — Select which times tables to practice, number of questions, and time limit
-2. **Quiz** — Answer each multiplication question by clicking one of the four choices
-3. **Results** — Review your score, accuracy, time taken, and see which questions you got right or wrong
+```bash
+npm run preview
+```
 
-## 🛠️ Tech Stack (React Version)
+### Linting
 
-- [React 19](https://react.dev/)
-- [Vite 8](https://vite.dev/)
-- [Tailwind CSS 4](https://tailwindcss.com/)
-- [ESLint](https://eslint.org/)
+```bash
+npm run lint
+```
 
-## 📄 License
+## Project Structure
 
-This project is private and not published under a public license.
+```
+demoOne/
+├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+├── src/
+│   ├── components/
+│   │   ├── SettingsScreen.jsx   # Table selection, question count, timer config
+│   │   ├── QuizScreen.jsx      # Question display, choices, timer, streak
+│   │   └── ResultsScreen.jsx   # Score summary and per-question breakdown
+│   ├── App.jsx                  # Screen routing and state coordination
+│   ├── main.jsx                 # React entry point
+│   └── index.css                # Tailwind imports and custom styles
+├── index.html                   # HTML shell
+├── vite.config.js               # Vite + React + Tailwind plugin config
+├── eslint.config.js             # ESLint flat config
+├── package.json
+└── README.md
+```
+
+## How It Works
+
+1. **Settings Screen** — Select which times tables to practice, how many questions, and the time limit per question.
+2. **Quiz Screen** — Answer multiple-choice questions. A progress bar and optional countdown timer track your progress. Correct answers build a streak counter.
+3. **Results Screen** — View your final score, accuracy, total time, and a color-coded table showing each question with your answer vs. the correct answer.
+
+## Customization
+
+- **Add more tables** — Extend the `ALL_TABLES` array in `SettingsScreen.jsx`
+- **Change number of choices** — Modify `generateChoices()` in `QuizScreen.jsx`
+- **Adjust styling** — Edit `src/index.css` or use Tailwind utility classes directly in components
+- **Add sound effects** — Hook into the `handleChoice` and `handleTimeout` functions in `QuizScreen.jsx`
+
+## License
+
+This project is private and not published under a specific license.
